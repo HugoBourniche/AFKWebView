@@ -2,18 +2,18 @@
 
     import TeamDisplay from "../teams/TeamDisplay.svelte";
 
-    export let teamWinner;
-    export let teamLoser;
+    export let fight;
+
 </script>
 
 <div class="container">
-
+    <div>{fight.type}</div>
     <div class="winning">
-        <TeamDisplay characterList="{teamWinner.characterResponses}" />
+        <TeamDisplay characterList="{fight.winner.characterResponses}" />
     </div>
     <div>VS</div>
     <div class="losing">
-        <TeamDisplay characterList="{teamLoser.characterResponses}" />
+        <TeamDisplay characterList="{fight.loser.characterResponses}" />
     </div>
 </div>
 
