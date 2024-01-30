@@ -19,7 +19,7 @@
         <div class="container">
             <h2>{fightsArray.length} {title}</h2>
             {#each fightsArray as fight}
-                <FightDisplay teamWinner="{fight.winner}" teamLoser="{fight.loser}"/>
+                <FightDisplay fight="{fight}"/>
                 <hr>
             {/each}
         </div>
