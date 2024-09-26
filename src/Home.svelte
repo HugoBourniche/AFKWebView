@@ -4,7 +4,7 @@
     import CharacterCard from "./characters/CharacterCard.svelte";
 
     async function getData() {
-        const res = await fetch('http://localhost:8080/characters');
+        const res = await fetch(process.env.BACK_URL + 'characters');
         const text = await res.text();
         if (res.ok) {
             console.log(JSON.parse(text));
@@ -24,7 +24,7 @@
             }
         }
 
-        const res = await fetch('http://localhost:8080/filterCharacters', options);
+        const res = await fetch(process.env.BACK_URL + 'filterCharacters', options);
         const text = await res.text();
         if (res.ok) {
             console.log(JSON.parse(text));

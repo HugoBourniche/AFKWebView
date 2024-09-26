@@ -6,6 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
+import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -50,6 +51,10 @@ export default {
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),
 
+		replace({
+			'process.env.STATUS': production ? '"production"' : '"dev"',
+			'process.env.BACK_URL': production ? '"http://bugo.re/afk/api/prod.com/"' : '"http://localhost:8080/"'
+		}),
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
 		// some cases you'll need additional configuration -

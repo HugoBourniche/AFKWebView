@@ -9,7 +9,7 @@
     let selectedTab = tabs[0];
 
 	async function getTeam() {
-        const res = await fetch('http://localhost:8080/current-team');
+        const res = await fetch(process.env.BACK_URL + 'current-team');
         const text = await res.text();
         if (res.ok) {
             console.log(JSON.parse(text));

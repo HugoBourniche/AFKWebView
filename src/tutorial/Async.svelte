@@ -1,6 +1,6 @@
 <script>
     async function getRandomNumber() {
-        const res = await fetch('http://localhost:8080/characters');
+        const res = await fetch(process.env.BACK_URL + 'characters');
         const text = await res.text();
 
         if (res.ok) {

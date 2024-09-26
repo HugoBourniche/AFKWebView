@@ -22,7 +22,7 @@
     async function getData(name) {
         console.log("Get Data of : " + name);
         name = name.replace(' & ', ' and ');
-        const res = await fetch('http://localhost:8080/character?name=' + name);
+        const res = await fetch(process.env.BACK_URL + 'character?name=' + name);
         const text = await res.text();
         if (res.ok) {
             console.log(JSON.parse(text));

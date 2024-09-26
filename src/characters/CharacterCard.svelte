@@ -15,7 +15,7 @@
 
     async function addToTeam(event) {
         event.stopPropagation()
-        const res = await fetch('http://localhost:8080/add-character?name=' + character.name.replace("&", "and"))
+        const res = await fetch(process.env.BACK_URL + 'add-character?name=' + character.name.replace("&", "and"))
         const characterPosition = await res.text();
         character.position = parseInt(characterPosition)
         teamUpdate();
@@ -27,7 +27,7 @@
             method: 'POST',
             body: character.name
         }
-        await fetch('http://localhost:8080/remove-character', options).then(() => {
+        await fetch(process.env.BACK_URL + 'remove-character', options).then(() => {
             character.position = 0
             teamUpdate();
         });
